@@ -3,11 +3,34 @@
 {% block title %} To-Do List{% endblock %}
 
 {% block content %}
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-success" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+<br/>
+
     {% if all_items %}
-        <ul>
+        <table class ='table table-bordered'>
         {% for things in all_items %}
-            <li>{{ things.item }} | {{ things.completed }}</li>
+            {% if things.completed %}
+                <tr class="table-secondary">
+                    <td class="striker">{{ things.item }}</td>
+                    <td align="center">{{ things.completed }}</td>
+                    <td align="center"><a href="{% url 'delete' things.id %}">Delete</a></td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td>{{ things.item }}</td>
+                    <td align="center">{{ things.completed }}</td>
+                    <td align="center"><a href="{% url 'delete' things.id %}">Delete</a></td>
+                </tr>
+
+            {% endif%}
         {% endfor %}
-        </ul>
+
+        </table>
     {% endif %}
 {% endblock %}
