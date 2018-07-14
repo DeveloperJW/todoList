@@ -1,4 +1,7 @@
 # todoList
+The app is deployed at: 
+http://zwang21.pythonanywhere.com/
+
 The Homepage of the app is:
 
 To add a TODO task into the list, use the textarea on the 
