@@ -1,7 +1,10 @@
 # todoList
 The Homepage of the app is:
 
-There existing four items are saved in database already.
+To add a TODO task into the list, use the textarea on the 
+right top corner and click the ```Add TO List``` button
+
+As shown followings, Some example tasks are added into the database
 ![](static/images/homepage.png)
 
 You can use the text bar on the right topper corner to add 
@@ -17,12 +20,12 @@ Similarly, a message will pop up and show the message is deleted.
 
 Updated on July 13th:
 -
-![](static/images/July13thUpdate.png)
 - Changed the UI 
 - Added table description for each colum
 - Added feature, so user can cross the task by clicking ```DONE``` button
 - Added feature, when user click the ```DONE``` button, the app will record the current
 time and save it to database
+- Added feature, allow user to edit content of the list
 
 Bugs Report:
 -
