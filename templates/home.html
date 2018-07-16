@@ -3,6 +3,11 @@
 {% block title %} To-Do List{% endblock %}
 
 {% block content %}
+    <div class="container">
+    <p style='font-family: "Helvetica Neue", Helvetica, Arial, sans-serif'>
+        Here is all items in your list:
+    </p>
+</div>
 {% if messages %}
     {% for message in messages %}
         <div class="alert alert-success" role="alert">
@@ -19,7 +24,7 @@
             <th><center>Update Status</center></th>
             <th><center>Current Status</center></th>
             <th><center>Finished Date&Time</center></th>
-            <th><center>Delete it from the list</center></th>
+            <th><center>Delete</center></th>
         </tr>
         </thread>
         {% for things in all_items %}

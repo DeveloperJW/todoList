@@ -45,9 +45,6 @@
     {% if user.is_authenticated %}
         Welcome back! <strong>{{ user.username }}</strong>
         <a class="btn" href="{% url 'logout' %}">Log Out</a>
-        <p style='font-family: "Helvetica Neue", Helvetica, Arial, sans-serif'>
-    Here is all items in your list:
-        </p>
     {% endif %}
     </p>
     {% block content %}
