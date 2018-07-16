@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from .models import List
 from .forms import ListForm
@@ -8,18 +9,24 @@ from datetime import datetime
 
 
 # Create your views here.
+@login_required(login_url='/users/login/')
 def home(request):
 
     if request.method == 'POST':
         form = ListForm(request.POST or None)
 
         if form.is_valid():
-            form.save()
-            all_items = List.objects.all
+            new_item = form.save(commit=False)
+            new_item.owner = request.user
+            new_item.save()
+            # form.save()
+            # all_items = List.objects.all
+            all_items = List.objects.filter(owner=request.user)
             messages.success(request, 'Okay! An item has been added to the List!')
             return render(request, 'home.html', {'all_items': all_items})
     else:
-        all_items = List.objects.all
+        # all_items = List.objects.all
+        all_items = List.objects.filter(owner=request.user)
         return render(request, 'home.html', {'all_items': all_items})
 
 
@@ -36,6 +43,7 @@ def delete(request, list_id):
     return redirect('home')
 
 
+@login_required(login_url='/users/login/')
 def cross_off(request, list_id):
     item = List.objects.get(pk=list_id)
     item.completed = True

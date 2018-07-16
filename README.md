@@ -1,6 +1,9 @@
 # todoList
 The app is deployed at: 
 http://zwang21.pythonanywhere.com/
+Testing Account:
+- Username: test
+- Password: w123123123
 
 The Homepage of the app is:
 
@@ -30,6 +33,15 @@ Updated on July 13th:
 time and save it to database
 - Added feature, allow user to edit content of the list
 
+Updates on July 16th:
+-
+- Added User Registration and User Login page
+- Now, users have to login before accessing the TODO List App
+- Added user control in database --- In previous version, all users have access to the only master database. 
+- At the current version, each user only have access to the content created by themselves. 
+They can not access information created by others.
+
+
 Bugs Report:
 -
 - <s>The default timezone is set to UTC, need to change to CDT</s>
@@ -40,7 +52,7 @@ need to double check
 TODO:
 -
 - Testing and add more features
-- Create user login page
+- <s>Create user login page</s> (updated: on July 16th)
 
 
 

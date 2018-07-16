@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %} Login Page{% endblock %}
+
+{% block content %}
+    <body class="text-center">
+    <div class="container">
+        <img src="https://cdn0.iconfinder.com/data/icons/illustricon-tech-iv/512/todo-512.png"
+             alt="a logo" width="144" height="144">
+    {% if form.errors %}
+    <p>Your username and password didn't match. Please try again.</p>
+    {% endif %}
+    <form method="post" action="{%  url 'login' %}">
+        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-primary btn-block w-50 mx-auto" name="submit">Log in</button>
+    <input type="hidden" name="next"
+           value="{% url 'home' %}"/>
+    </form>
+    <br>
+    <p>Need an account? <a href="{% url 'register' %}">Click here to register</a>.</p>
+    </div>
+    </body>
+{% endblock %}

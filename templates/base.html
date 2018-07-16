@@ -22,6 +22,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
 
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
@@ -39,8 +40,16 @@
         </form>
     </div>
 </nav>
-<br/>
 <div class="container">
+    <p style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;font-size: 150%">
+    {% if user.is_authenticated %}
+        Welcome back! <strong>{{ user.username }}</strong>
+        <a class="btn" href="{% url 'logout' %}">Log Out</a>
+        <p style='font-family: "Helvetica Neue", Helvetica, Arial, sans-serif'>
+    Here is all items in your list:
+        </p>
+    {% endif %}
+    </p>
     {% block content %}
 
     {% endblock %}
