@@ -18,6 +18,7 @@ def home(request):
         if form.is_valid():
             new_item = form.save(commit=False)
             new_item.owner = request.user
+            new_item.addedTime = datetime.now(pytz.utc)
             new_item.save()
             # form.save()
             # all_items = List.objects.all
@@ -43,12 +44,13 @@ def delete(request, list_id):
     return redirect('home')
 
 
-@login_required(login_url='/users/login/')
+# @login_required(login_url='/users/login/')
 def cross_off(request, list_id):
     item = List.objects.get(pk=list_id)
     item.completed = True
     item.completedTime = datetime.now(pytz.utc)
     item.save()
+    messages.success(request, 'Well done! The task is completed.')
     return redirect('home')
 
 

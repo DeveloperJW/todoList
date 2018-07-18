@@ -23,7 +23,8 @@
             <th>Your To-Do List</th>
             <th><center>Update Status</center></th>
             <th><center>Current Status</center></th>
-            <th><center>Finished Date&Time</center></th>
+            <th><center>Finished Time</center></th>
+            <th><center>Added Time</center></th>
             <th><center>Delete</center></th>
         </tr>
         </thread>
@@ -35,6 +36,7 @@
                         <button type="button" class="btn btn-info">Redo it</button></a></td>
                     <td align="center"><h4><span class="badge badge-info">{{ things.completed }}</span></h4></td>
                     <td align="center">{{ things.completedTime }}</td>
+                    <td align="center">{{ things.addedTime }}</td>
                     <td align="center"><a href="{% url 'delete' things.id %}">
                         <button type="button" class="btn btn-danger">Delete</button></a></td>
                 </tr>
@@ -45,6 +47,7 @@
                         <button type="button" class="btn btn-success">Done</button></a></td>
                     <td align="center"><h4><span class="badge badge-info">{{ things.completed }}</span></h4></td>
                     <td align="center">N/A</td>
+                    <td align="center">{{ things.addedTime }}</td>
                     <td align="center"><a href="{% url 'delete' things.id %}">
                         <button type="button" class="btn btn-danger">Delete</button></a></td>
                 </tr>

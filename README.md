@@ -36,6 +36,8 @@ time and save it to database
 Updates on July 16th:
 -
 - Added User Registration and User Login page
+![](static/images/Login_page.png)
+![](static/images/Register_page.png)
 - Now, users have to login before accessing the TODO List App
 - Added user control in database --- In previous version, all users have access to the only master database. 
 - At the current version, each user only have access to the content created by themselves. 
