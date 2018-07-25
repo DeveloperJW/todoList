@@ -4,19 +4,21 @@
 
 {% block content %}
     {% if item %}
-        <form class="form-inline my-2 my-lg-0" method="POST">
+        <form id="theEditForm" method="POST">
+        <div class="form-group">
             {% csrf_token %}{#Django security feature#}
-            <p>
-            <input class="form-control mr-sm-2" type="search" placeholder="{{ item.item }}"
+                <label for="task_title">Task Title</label>
+            <input class="form-control mr-sm-2" id="task_title" type="search" placeholder="{{ item.item }}"
                    value="{{ item.item }}" aria-label="Search" name="item">
+                <br><br>
+                <label for="task_detail">Details of the task</label>
+                <textarea class="form-control" id="task_detail" name="detail"
+                          cols=25 rows=10>{{ item.detail }}</textarea>
             <input type="hidden" value="{{ item.completed }}" name="completed">
-            <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Edit Title</button>
-                <br>
-                <br>
-            <textarea class="form-control" name="task_details" cols=25 rows=10>Please enter something</textarea>
+                <br><br>
             <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Edit Detail</button>
                 <br>
-            </p>
+        </div>
         </form>
     {% endif %}
 {% endblock %}
