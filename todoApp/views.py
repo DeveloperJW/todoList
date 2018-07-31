@@ -25,6 +25,10 @@ def home(request):
             all_items = List.objects.filter(owner=request.user)
             messages.success(request, 'Okay! An item has been added to the List!')
             return render(request, 'home.html', {'all_items': all_items})
+        else:
+            messages.warning(request, 'Attention: the input area can not be empty!')
+            all_items = List.objects.filter(owner=request.user)
+            return render(request, 'home.html', {'all_items': all_items})
     else:
         # all_items = List.objects.all
         all_items = List.objects.filter(owner=request.user)

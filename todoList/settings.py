@@ -124,3 +124,5 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
+# SECURE_SSL_REDIRECT = True
+# Remember to uncomment-out the above line of code to force https
