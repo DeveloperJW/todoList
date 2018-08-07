@@ -1,4 +1,5 @@
 from django.test import TestCase, SimpleTestCase
+from django.urls import reverse
 from .models import List
 
 # Create your tests here.
@@ -15,8 +16,13 @@ class SimpleTest(SimpleTestCase):
         response = self.client.get('/about/')
         self.assertEqual(response.status_code, 200)
 
+    # def test_view_url_by_name(self):
+    #     resp = self.client.get(reverse('home'))
+    #     self.assertEqual(resp.status_code, 200)
+
 
 class ListModelTest(TestCase):
+    # test for adding new task item to the List
     def setUp(self):
         List.objects.create(item='Using TestCase to test List Model')
 

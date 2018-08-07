@@ -31,6 +31,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'about' %}">About Us</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'coc' %}">Community</a>
+            </li>
         </ul>
         <form class="form-inline my-2 my-lg-0" method="POST">
             {% csrf_token %}{#Django security feature#}
@@ -43,7 +46,7 @@
 <div class="container">
     <p style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;font-size: 150%">
     {% if user.is_authenticated %}
-        Welcome back! <strong>{{ user.username }}</strong>
+        Welcome back, <strong>{{ user.username }}</strong>!
         <a class="btn" href="{% url 'logout' %}">Log Out</a>
     {% endif %}
     </p>

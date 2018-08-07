@@ -56,7 +56,8 @@ TODO:
 - Testing and add more features
 - <s>Create user login page</s> (updated: on July 16th)
 
-
-
-
+Testing:
+-
+- To run tests: use command line
+- python manage.py test
 

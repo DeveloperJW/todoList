@@ -35,12 +35,14 @@ def home(request):
         return render(request, 'home.html', {'all_items': all_items})
 
 
+# the about function will redirect to the about.html page
+# the about.html page display information such as the development team and Tools used for this project.
 def about(request):
-    my_name = "Justin Wang"
-
-    return render(request, 'about.html', {'name': my_name})
+    return render(request, 'about.html', {})
 
 
+# the delete function is triggered when user click the DELETE button for certain task item
+# we use list_id as primary key to make sure database only delete the task that is supposed to be deleted
 def delete(request, list_id):
     item = List.objects.get(pk=list_id)
     item.delete()
@@ -49,6 +51,8 @@ def delete(request, list_id):
 
 
 # @login_required(login_url='/users/login/')
+# The cross_off function is triggered when users click DONE button in their list
+# We set their completedTime as the current sever time and mark the status of that task to True
 def cross_off(request, list_id):
     item = List.objects.get(pk=list_id)
     item.completed = True
@@ -59,8 +63,11 @@ def cross_off(request, list_id):
 
 
 def uncross(request, list_id):
+    # use list_id as primary key to make sure we are updating certain task item
     item = List.objects.get(pk=list_id)
     item.completed = False
+    # when users choose to redo a task item, we are resetting the addedTime(Starting Time of a task) to current time
+    item.addedTime = datetime.now(pytz.utc)
     item.save()
     return redirect('home')
 
@@ -79,5 +86,11 @@ def edit(request, list_id):
     else:
         item = List.objects.get(pk=list_id)
         return render(request, 'editList.html', {'item': item})
+
+# redirect to the Code of Conduct page
+# this function is triggered when users click on the Communication button on the Top Navigation bar
+def coc(request):
+    return render(request, 'coc.html', {})
+
 
 
