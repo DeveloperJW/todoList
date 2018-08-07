@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 from django.contrib.auth import logout, login, authenticate
 from django.contrib.auth.forms import UserCreationForm
+from .forms import CustomUserCreationForm
 
 
 # Create your views here.
@@ -13,19 +14,21 @@ from django.contrib.auth.forms import UserCreationForm
 def logout_view(request):
     """Log the user out"""
     logout(request)
-    return redirect('home')
+    return redirect('login')
 
 
 def register(request):
     """Register a new user"""
     if request.method != 'POST':
-        form = UserCreationForm()
+        # form = UserCreationForm()
+        form = CustomUserCreationForm()
     else:
-        form = UserCreationForm(request.POST)
+        # form = UserCreationForm(request.POST)
+        form = CustomUserCreationForm(request.POST)
 
         if form.is_valid():
             new_user = form.save()
-            authenticated_user = authenticate(username= new_user.username, password=request.POST['password1'])
+            authenticated_user = authenticate(username=new_user.username, password=request.POST['password1'])
             login(request, authenticated_user)
             return redirect('home')
 

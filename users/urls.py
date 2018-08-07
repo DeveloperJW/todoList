@@ -7,7 +7,8 @@ from . import views
 
 
 urlpatterns = [
-    path('login/', login, {'template_name': 'login.html'}, name ='login'),
+    path('login/', login, {'template_name': 'login.html'}, name='login'),
+    # path('login/', views.login_view, name='login'),
     # Logout page
     path('logout/', views.logout_view, name='logout'),
     # Registration page

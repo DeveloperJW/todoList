@@ -22,5 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # set up root urls
     path('', include('todoApp.urls')),
+    path('users/', include('django.contrib.auth.urls')),
     path('users/', include('users.urls'))
 ]

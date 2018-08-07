@@ -124,5 +124,21 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
+
+# Use the AUTH_USER_MODEL config to tell Django to use our new custom user model in place of the built-in User model
+AUTH_USER_MODEL = 'users.CustomUser'
+
+# Logout redirect url
+LOGOUT_REDIRECT_URL = 'home'
+
+# Email backend
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'Add Username'
+EMAIL_HOST_PASSWORD = 'Add Password'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
 # SECURE_SSL_REDIRECT = True
 # Remember to uncomment-out the above line of code to force https
