@@ -22,23 +22,14 @@
         <tr>
             <th>Task Name</th>
             <th><center>Update Status</center></th>
-            <th><center>Current Status</center></th>
-            <th><center>Finished Time</center></th>
-            <th><center>Added Time</center></th>
-            <th>Time Spent</th>
             <th><center>Delete</center></th>
         </tr>
-        </thread>
         {% for things in all_items %}
             {% if things.completed %}
                 <tr class="table-success">
                     <td><s><a href="{% url 'edit' things.id %}">{{ things.item }}</a></s></td>
                     <td align="center"><a href="{% url 'uncross' things.id %}">
                         <button type="button" class="btn btn-info">Redo it</button></a></td>
-                    <td align="center"><h4><span class="badge badge-info">{{ things.completed }}</span></h4></td>
-                    <td align="center">{{ things.completedTime }}</td>
-                    <td align="center">{{ things.addedTime }}</td>
-                    <td align="center">{{things.addedTime|timesince:things.completedTime}}</td>
                     <td align="center"><a href="{% url 'delete' things.id %}">
                         <button type="button" class="btn btn-danger">Delete</button></a></td>
                 </tr>
@@ -47,10 +38,6 @@
                     <td><a href="{% url 'edit' things.id %}">{{ things.item }}</a></td>
                     <td align="center"><a href="{% url 'cross_off' things.id %}">
                         <button type="button" class="btn btn-success">Done</button></a></td>
-                    <td align="center"><h4><span class="badge badge-info">{{ things.completed }}</span></h4></td>
-                    <td align="center">N/A</td>
-                    <td align="center">{{ things.addedTime }}</td>
-                    <td align="center">N/A</td>
                     <td align="center"><a href="{% url 'delete' things.id %}">
                         <button type="button" class="btn btn-danger">Delete</button></a></td>
                 </tr>

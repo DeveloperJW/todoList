@@ -69,6 +69,7 @@ def uncross(request, list_id):
     # when users choose to redo a task item, we are resetting the addedTime(Starting Time of a task) to current time
     item.addedTime = datetime.now(pytz.utc)
     item.save()
+    messages.success(request, 'Task been reset')
     return redirect('home')
 
 
@@ -86,6 +87,7 @@ def edit(request, list_id):
     else:
         item = List.objects.get(pk=list_id)
         return render(request, 'editList.html', {'item': item})
+
 
 # redirect to the Code of Conduct page
 # this function is triggered when users click on the Communication button on the Top Navigation bar

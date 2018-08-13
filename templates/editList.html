@@ -7,17 +7,32 @@
         <form id="theEditForm" method="POST">
         <div class="form-group">
             {% csrf_token %}{#Django security feature#}
-                <label for="task_title">Task Title</label>
+            <label for="task_title">Task Title</label>
             <input class="form-control mr-sm-2" id="task_title" type="search" placeholder="{{ item.item }}"
                    value="{{ item.item }}" aria-label="Search" name="item">
-                <br><br>
-                <label for="task_detail">Details of the task</label>
-                <textarea class="form-control" id="task_detail" name="detail"
-                          cols=25 rows=10>{{ item.detail }}</textarea>
+            <br>
+            <label for="task_detail">Details of the task</label>
+            <textarea class="form-control" id="task_detail" name="detail"
+                          cols=15 rows=5>{{ item.detail }}</textarea>
             <input type="hidden" value="{{ item.completed }}" name="completed">
-                <br><br>
+            <br>
+            Current Status: <h4><span class="badge badge-info">{{ item.completed }}</span></h4>
+            Added time: <h5>{{ item.addedTime }}</h5>
+            Completed Time:
+            {% if item.completed %}
+                <h5>{{ item.completedTime }}</h5>
+            {% else %}
+                <h5>You haven't finished this task.</h5>
+            {% endif %}
+            Time Spent:
+            {% if item.completed %}
+                <h5>{{item.addedTime|timesince:item.completedTime}}</h5>
+            {% else %}
+                <h5>N/A</h5>
+            {% endif %}
+            <br>
             <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Edit Detail</button>
-                <br>
+            <br>
         </div>
         </form>
     {% endif %}
